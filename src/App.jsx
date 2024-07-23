@@ -1,10 +1,18 @@
-import { useRef } from "react";
-import Univer_Sheet from "./components/Univer_Sheet/Univer_Sheet";
+import { useRef, useState } from "react";
+import UniverSheet from "./components/UniverSheet";
+import { DEFAULT_WORKBOOK_DATA } from "./helper/constant";
 
-const App = () => {
+function App() {
+  const [data] = useState(DEFAULT_WORKBOOK_DATA);
   const univerRef = useRef();
 
-  return <Univer_Sheet style={{ flex: 1 }} ref={univerRef} />;
-};
+  return (
+    <div id="root">
+      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+        <UniverSheet style={{ flex: 1 }} ref={univerRef} data={data} />
+      </div>
+    </div>
+  );
+}
 
 export default App;
